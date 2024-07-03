@@ -1,0 +1,32 @@
+{
+  "products": [
+    {
+      "id": 0,
+      "title": "쪼꼬미 꼬질이 강아지 티슈케이스 두루마리 휴지 케이스 집들이",
+      "brand": "고그린 오브젝트",
+      "photo": "pr1.jpg",
+      "price": 26900
+    },
+    {
+      "id": 1,
+      "title": "Quokka in School Figure Pen",
+      "brand": "다이노탱",
+      "photo": "pr2.jpg",
+      "price": 7000
+    },
+    {
+      "id": 2,
+      "title": "괴마옥 & 이끼코스터 SET",
+      "brand": "스퀘어폰드",
+      "photo": "pr3.jpg",
+      "price": 28000
+    },
+    {
+      "id": 3,
+      "title": "자가드 프리미엄 발매트(45X65) 17종",
+      "brand": "마틸라",
+      "photo": "pr4.jpg",
+      "price": 24900
+    }
+  ]
+}
