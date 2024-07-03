@@ -34,3 +34,13 @@ function createItem(products) {
 		ul.insertAdjacentHTML('beforeend', li);
 	});
 }
+
+// TODO : 검색기능 작업하기 - 7/4
+const search = document.querySelector('.search input');
+const searchBtn = document.querySelector('.search .btn-serch');
+
+searchBtn.addEventListener('click', e => {
+	if (e.target.value === null || e.target.value === '') {
+		alert('검색어를 입력하세요.');
+	}
+});
