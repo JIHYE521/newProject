@@ -47,7 +47,7 @@ const searchInput = document.querySelector('.search input');
 const searchBtn = document.querySelector('.btn-serch');
 
 function filterItem(products) {
-	function filterling() {
+	function filtering() {
 		const text = searchInput.value;
 		const filterProducts = products.filter(item => {
 			return item.title.includes(text) || item.brand.includes(text);
@@ -55,5 +55,5 @@ function filterItem(products) {
 		createItem(filterProducts);
 	}
 
-	searchBtn.addEventListener('click', filterling);
+	searchBtn.addEventListener('click', filtering);
 }
