@@ -55,15 +55,16 @@ a {
 .container {
 	margin: 0 auto;
 	padding: 2rem;
-	max-width: 1200px;
+	width: 1200px;
 	box-sizing: border-box;
-	border: 1px solid var(--testColor);
+	/* border: 1px solid var(--testColor); */
 }
 .products {
-	border: 1px solid var(--testColor);
+	/* border: 1px solid var(--testColor); */
 }
 .products > ul {
 	display: flex;
+	flex-wrap: wrap;
 	gap: 1rem;
 }
 .product {
@@ -124,7 +125,7 @@ a {
 	margin: 0 2px;
 	width: 28px;
 	height: 28px;
-	background: url('../img/icon/icon-cart.svg') 0 2px no-repeat;
+	/* background: url('../img/icon/icon-cart.svg') 0 2px no-repeat; */
 	background-size: 100%;
 }
 .cart__drag {

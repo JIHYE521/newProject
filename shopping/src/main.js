@@ -12,7 +12,7 @@ getData() //
 	.then(products => {
 		//item 생성
 		createItem(products);
-		// searchItem(products);
+		filterItem(products);
 	}) //
 	.catch(error => {
 		console.log('error2 : ', error);
@@ -41,4 +41,19 @@ function createItem(products) {
 
 		ul.insertAdjacentHTML('beforeend', li);
 	});
+}
+
+const searchInput = document.querySelector('.search input');
+const searchBtn = document.querySelector('.btn-serch');
+
+function filterItem(products) {
+	function filterling() {
+		const text = searchInput.value;
+		const filterProducts = products.filter(item => {
+			return item.title.includes(text) || item.brand.includes(text);
+		});
+		createItem(filterProducts);
+	}
+
+	searchBtn.addEventListener('click', filterling);
 }
