@@ -27,6 +27,13 @@
 			"brand": "마틸라",
 			"photo": "pr4.jpg",
 			"price": 24900
+		},
+		{
+			"id": 4,
+			"title": "구름이끼 미니화분",
+			"brand": "스퀘어폰드",
+			"photo": "pr5.jpg",
+			"price": 19000
 		}
 	]
 }
