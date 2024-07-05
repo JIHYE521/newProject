@@ -42,7 +42,8 @@ a {
 .header h1 {
 	margin-right: 1rem;
 	font-family: 'Playwrite ES Deco', cursive;
-	font-size: 1.2rem;
+	font-size: 1rem;
+	line-height: 1.6;
 }
 .header__menu {
 	display: flex;
@@ -60,7 +61,7 @@ a {
 	box-sizing: border-box;
 	/* border: 1px solid var(--testColor); */
 }
-.products > ul {
+.products__container {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -72,6 +73,7 @@ a {
 	flex-direction: column;
 	width: calc((100% - 5rem) / 5);
 	box-sizing: border-box;
+	background-color: var(--lightGray);
 }
 .product img {
 	margin: 0 auto;
@@ -83,6 +85,7 @@ a {
 .product > div {
 	padding: 1rem;
 	font-size: 1rem;
+	color: var(--textColor);
 }
 .product .brand {
 	font-size: 0.7em;
