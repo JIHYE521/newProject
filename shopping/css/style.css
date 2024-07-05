@@ -4,6 +4,7 @@
 	--testColor: #fec30d;
 	--deepGray: #282828;
 	--lightGray: #f4f4f4;
+	--danger: #ff4800;
 }
 body,
 h1,
@@ -99,11 +100,26 @@ a {
 	font-size: 0.8rem;
 }
 .product .product__btn {
+	display: flex;
+	gap: 5px;
 	margin-top: auto;
 }
 .product__btn button {
 	display: inline-block;
-	/* width: 50%; */
+	padding: 0.5rem;
+	width: 50%;
+	/* font-weight: bold; */
+	border: 1px solid var(--deepGray);
+	box-sizing: border-box;
+	background-color: transparent;
+}
+.product__btn button.btn-buy-now {
+	color: var(--textColorBright);
+	background-color: var(--textColor);
+}
+.product__btn button.btn-buy-now:hover {
+	border-color: var(--danger);
+	background-color: var(--danger);
 }
 
 .cart {

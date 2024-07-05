@@ -33,7 +33,7 @@ function createItem(products) {
 					<p class="price">${item.price}</p>
 				</div>
 				<div class="product__btn">
-					<button type="button" class="btn-add-cart">장바구니 담기</button>
+					<button type="button" class="btn-add-cart">장바구니</button>
 					<button type="button" class="btn-buy-now">바로구매</button>
 				</div>
 			</li>
