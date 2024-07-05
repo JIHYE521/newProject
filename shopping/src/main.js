@@ -89,10 +89,10 @@ function addCart(products) {
 
 		// 클릭하면 담기
 		if (target.matches('.btn-add-cart')) {
-			cartProducts = products.filter(item => item.id === +prdIndex);
-			cartItem(cartProducts, cart);
+			const addItem = products.filter(item => item.id === +prdIndex);
+			console.log('test', addItem);
 		}
-
+		// cartItem(cartProducts, cart);
 		console.log(cartProducts);
 		// 담은거에서 중복확인하기
 	});
