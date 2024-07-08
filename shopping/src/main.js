@@ -43,6 +43,15 @@ function searchItem(products) {
 
 function setEventListeners(products) {
 	searchBtn.addEventListener('click', () => searchItem(products));
+	searchInput.addEventListener('keydown', event => {
+		//keyup
+		if (event.isComposing) {
+			return;
+		}
+		if (event.key === 'Enter') {
+			searchItem(products);
+		}
+	});
 }
 
 //Item Add Cart
