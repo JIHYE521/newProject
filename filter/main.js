@@ -8,8 +8,22 @@ function loadItems() {
 // main
 loadItems() //
 	.then(item => {
-		console.log(item);
-		// displayItem(item);
+		displayItem(item);
 		// setEventListeners(item);
 	}) //
 	.catch(console.log);
+
+const ul = document.querySelector('section ul');
+
+function displayItem(item) {
+	item.forEach(item => {
+		const li = `
+      <li>
+        <img src="img/${item.img}" alt="" />
+        <span>Gender : ${item.gender}, Size : ${item.size}</span>
+      </li>
+    `;
+
+		ul.insertAdjacentHTML('beforeend', li);
+	});
+}
