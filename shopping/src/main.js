@@ -28,11 +28,28 @@ function createHTMLString(item) {
 }
 
 //Item Search
+const searchBtn = document.querySelector('.btn-search');
+const searchInput = document.querySelector('#search');
+
+function searchItem(products) {
+	const searchWord = searchInput.value;
+	if (searchWord === '') {
+		console.log('검색어를 입력하세요.');
+		return;
+	}
+	const result = products.filter(item => item.title.includes(searchWord) || item.brand.includes(searchWord));
+	displayItem(result);
+}
+
+function setEventListeners(products) {
+	searchBtn.addEventListener('click', () => searchItem(products));
+}
+
 //Item Add Cart
 
 loadItem()
 	.then(products => {
-		// console.log(products);
 		displayItem(products);
+		setEventListeners(products);
 	})
 	.catch(console.log);
