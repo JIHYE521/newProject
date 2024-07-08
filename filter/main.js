@@ -21,45 +21,31 @@ function createHTMLString(item) {
   `;
 }
 
+function onButtonClick(event, items) {
+	const dataset = event.target.dataset;
+	const key = dataset.key;
+	const value = dataset.value;
+	if (key === null || value === null) {
+		return;
+	}
+	const filterItem = items.filter(item => item[key] === value);
+	displayItem(filterItem);
+}
+
+function setEventListeners(items) {
+	const btnReset = document.querySelector('.btn-refresh');
+	const btns = document.querySelector('.btns');
+
+	btnReset.addEventListener('click', () => displayItem(items));
+	btns.addEventListener('click', event => onButtonClick(event, items));
+}
+
 // main
 loadItems() //
 	.then(items => {
 		displayItem(items);
-		// setEventListeners(items);
+		setEventListeners(items);
 	}) //
 	.catch(console.log);
 
-// function displayItem(item) {
-// 	const ul = document.querySelector('section ul');
-// 	ul.innerHTML = '';
-// 	item.forEach(item => {
-// 		const li = `
-//       <li>
-//         <img src="img/${item.img}" alt="" />
-//         <span>Gender : ${item.gender}, Size : ${item.size}</span>
-//       </li>
-//     `;
-
-// 		ul.insertAdjacentHTML('beforeend', li);
-// 	});
-// }
-
-// function setEventListeners(item) {
-// 	const btns = document.querySelector('.btns');
-
-// 	btns.addEventListener('click', e => {
-// 		// console.log(e.target);
-// 		if (e.target.matches('.btn-color')) {
-// 			const color = e.target.dataset.color;
-// 			let filterItem = item.filter(item => item.color === color);
-// 			displayItem(filterItem);
-// 		} else if (e.target.matches('.btn-img img')) {
-// 			const category = e.target.parentNode.dataset.category;
-// 			filterItem = item.filter(item => item.type === category);
-// 			displayItem(filterItem);
-// 		}
-// 	});
-
-// 	const btnRefresh = document.querySelector('.btn-refresh');
-// 	btnRefresh.addEventListener('click', () => displayItem(item));
-// }
+// 전체 재생성보다 필터링 된 아이템들만 클래스 붙여서 노출시키기..
