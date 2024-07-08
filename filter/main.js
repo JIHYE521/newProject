@@ -5,11 +5,13 @@ function loadItems() {
 		.then(json => json.items);
 }
 
+// 목록 업데이트
 function displayItem(items) {
 	const ul = document.querySelector('section ul');
 	ul.innerHTML = items.map(item => createHTMLString(item)).join('');
 }
 
+// HTML 생성
 function createHTMLString(item) {
 	return `
     <li>
