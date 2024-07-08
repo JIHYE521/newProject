@@ -32,30 +32,24 @@ function createHTMLString(item) {
 const searchBtn = document.querySelector('.btn-search');
 const searchInput = document.querySelector('#search');
 
+// 검색기능
 function searchItem(products) {
-	searchBtn.addEventListener('click', () => {
-		const searchWord = searchInput.value;
-		if (searchWord === '') {
-			alert('검색어를 입력하세요.');
-			return;
-		}
-		const result = products.filter(item => item.title.includes(searchWord) || item.brand.includes(searchWord));
-		displayItem(result);
-	});
+	const searchWord = searchInput.value.trim();
+	if (searchWord === '') {
+		alert('검색어를 입력하세요.');
+		return;
+	}
+	const result = products.filter(item => item.title.includes(searchWord) || item.brand.includes(searchWord));
+	displayItem(result);
+}
 
+function setSearchEventListeners(products) {
+	searchBtn.addEventListener('click', () => {
+		searchItem(products);
+	});
 	searchInput.addEventListener('keydown', event => {
-		const searchWord = searchInput.value;
-		if (searchWord === '') {
-			alert('검색어를 입력하세요.');
-			return;
-		}
-		if (event.isComposing) {
-			return;
-		}
-		if (event.key === 'Enter') {
-			const result = products.filter(item => item.title.includes(searchWord) || item.brand.includes(searchWord));
-			displayItem(result);
-		}
+		if (event.isComposing) return;
+		if (event.key === 'Enter') searchItem(products);
 	});
 }
 
@@ -64,6 +58,6 @@ function searchItem(products) {
 loadItem()
 	.then(products => {
 		displayItem(products);
-		searchItem(products);
+		setSearchEventListeners(products);
 	})
 	.catch(console.log);
