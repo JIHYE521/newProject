@@ -79,3 +79,21 @@ section {
 	background-color: var(--color-light-gray);
 	box-sizing: border-box;
 }
+
+section ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+section li {
+	display: flex;
+	align-items: center;
+	margin: 0.5rem 0;
+	padding: 0.5rem;
+	background-color: var(--color-white);
+}
+section li img {
+	display: block;
+	margin-right: 1rem;
+	width: 2rem;
+}
