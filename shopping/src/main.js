@@ -14,10 +14,10 @@ function createHTMLString(item) {
 	return `
     <li class="product">
       <img src="img/${item.photo}" alt="" />
-      <div>
+      <div class="product__info">
         <span class="brand">${item.brand}</span>
         <p class="title">${item.title}</p>
-        <p class="price">가격 : ${item.price}</p>
+        <p class="price">${item.price}</p>
       </div>
       <div class="product__btn">
         <button type="button" class="btn-add-cart">장바구니</button>
@@ -27,7 +27,7 @@ function createHTMLString(item) {
   `;
 }
 
-//Item Filter
+//Item Search
 //Item Add Cart
 
 loadItem()
