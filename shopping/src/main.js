@@ -5,9 +5,11 @@ function loadItem() {
 }
 
 //Item display
-const productsContainer = document.querySelector('.products__container ul');
+const productsContainer = document.querySelector('.products__container');
 function displayItem(products) {
-	productsContainer.innerHTML = products.map(item => createHTMLString(item)).join('');
+	const ul = document.createElement('ul');
+	productsContainer.appendChild(ul);
+	ul.innerHTML = products.map(item => createHTMLString(item)).join('');
 }
 
 function createHTMLString(item) {
@@ -62,13 +64,31 @@ function addItem(products, itemIndex) {
 	} else {
 		cart.push({ ...newArray, quantity: 1 });
 	}
-	console.log(cart);
 	displayCart(cart);
 }
 
 function displayCart(products) {
-	const cartContainer = document.querySelector('.cart__drag .products__container ul');
-	cartContainer.innerHTML = products.map(item => createHTMLString(item)).join('');
+	const cartContainer = document.querySelector('.cart__drag .products__container');
+	cartContainer.innerHTML = '';
+	const ul = document.createElement('ul');
+	cartContainer.appendChild(ul);
+	ul.innerHTML = products.map(item => createCartHTMLString(item)).join('');
+}
+
+function createCartHTMLString(item) {
+	return `
+    <li class="product" data-index=${item.id}>
+      <img src="img/${item.photo}" alt="" />
+      <div class="product__info">
+        <span class="brand">${item.brand}</span>
+        <p class="title">${item.title}</p>
+        <p class="price">${item.price}</p>
+      </div>
+			<div class="product__quantity">
+				<input type="text" disabled value=${item.quantity} />
+			</div>
+    </li>
+  `;
 }
 
 function setAddCartEventListeners(products) {
