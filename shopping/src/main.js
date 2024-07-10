@@ -6,12 +6,6 @@ function loadItem() {
 
 //Item display
 const productsContainer = document.querySelector('.products__container');
-function displayItem(products) {
-	const ul = document.createElement('ul');
-	productsContainer.appendChild(ul);
-	ul.innerHTML = products.map(item => createHTMLString(item)).join('');
-}
-
 function createHTMLString(item) {
 	return `
     <li class="product" data-index=${item.id}>
@@ -27,6 +21,12 @@ function createHTMLString(item) {
       </div>
     </li>
   `;
+}
+
+function displayItem(products) {
+	const ul = document.createElement('ul');
+	productsContainer.appendChild(ul);
+	ul.innerHTML = products.map(item => createHTMLString(item)).join('');
 }
 
 //Item Search
@@ -55,26 +55,6 @@ function setSearchEventListeners(products) {
 // 장바구니 배열 선언
 let cart = [];
 
-// 장바구니 담기
-function addItem(products, itemIndex) {
-	const newArray = products.find(item => item.id === +itemIndex);
-	const cartItem = cart.find(item => item.id === newArray.id);
-	if (cartItem) {
-		cartItem.quantity += 1;
-	} else {
-		cart.push({ ...newArray, quantity: 1 });
-	}
-	displayCart(cart);
-}
-
-function displayCart(products) {
-	const cartContainer = document.querySelector('.cart__drag .products__container');
-	cartContainer.innerHTML = '';
-	const ul = document.createElement('ul');
-	cartContainer.appendChild(ul);
-	ul.innerHTML = products.map(item => createCartHTMLString(item)).join('');
-}
-
 function createCartHTMLString(item) {
 	return `
     <li class="product" data-index=${item.id}>
@@ -89,6 +69,35 @@ function createCartHTMLString(item) {
 			</div>
     </li>
   `;
+}
+
+function displayCart(products) {
+	const cartContainer = document.querySelector('.cart__drag .products__container');
+	cartContainer.innerHTML = '';
+	const ul = document.createElement('ul');
+	cartContainer.appendChild(ul);
+	ul.innerHTML = products.map(item => createCartHTMLString(item)).join('');
+}
+
+function addItem(products, itemIndex) {
+	const cartAddItem = products.find(item => item.id === +itemIndex);
+	const cartItem = cart.find(item => item.id === cartAddItem.id);
+	if (cartItem) {
+		cartItem.quantity += 1;
+	} else {
+		cart.push({ ...cartAddItem, quantity: 1 });
+	}
+	displayCart(cart);
+	calculateTotalPrice();
+}
+
+function calculateTotalPrice() {
+	const totalPrice = cart.reduce((a, b) => {
+		return a + b.price * b.quantity;
+		//
+	});
+
+	console.log(totalPrice);
 }
 
 function setAddCartEventListeners(products) {
