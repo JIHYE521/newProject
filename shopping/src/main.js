@@ -5,14 +5,14 @@ function loadItem() {
 }
 
 //Item display
+const productsContainer = document.querySelector('.products__container ul');
 function displayItem(products) {
-	const productsContainer = document.querySelector('.products__container ul');
 	productsContainer.innerHTML = products.map(item => createHTMLString(item)).join('');
 }
 
 function createHTMLString(item) {
 	return `
-    <li class="product">
+    <li class="product" data-index=${item.id}>
       <img src="img/${item.photo}" alt="" />
       <div class="product__info">
         <span class="brand">${item.brand}</span>
@@ -28,11 +28,8 @@ function createHTMLString(item) {
 }
 
 //Item Search
-
 const searchBtn = document.querySelector('.btn-search');
 const searchInput = document.querySelector('#search');
-
-// 검색기능
 function searchItem(products) {
 	const searchWord = searchInput.value.trim();
 	if (searchWord === '') {
@@ -53,11 +50,35 @@ function setSearchEventListeners(products) {
 	});
 }
 
-//Item Add Cart
+// 장바구니 배열 선언
+let cart = [];
+
+// 장바구니 담기
+function addItem(products, itemIndex) {
+	const newArray = products.find(item => item.id === +itemIndex);
+	cart.push(newArray);
+
+	console.log(cart);
+	displayCart(cart);
+}
+
+function displayCart(products) {
+	const cartContainer = document.querySelector('.cart__drag .products__container ul');
+	cartContainer.innerHTML = products.map(item => createHTMLString(item)).join('');
+}
+
+function setAddCartEventListeners(products) {
+	productsContainer.addEventListener('click', event => {
+		const addCartBtn = event.target.parentNode.parentNode;
+		const targetItemIndex = addCartBtn.dataset.index;
+		addItem(products, targetItemIndex);
+	});
+}
 
 loadItem()
 	.then(products => {
 		displayItem(products);
 		setSearchEventListeners(products);
+		setAddCartEventListeners(products);
 	})
 	.catch(console.log);

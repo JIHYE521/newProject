@@ -105,7 +105,14 @@ a {
 }
 .product .product__btn button {
 	display: block;
+	padding: 5px;
 	width: 50%;
+	border: 1px solid var(--textColor);
+	background-color: var(--textColorBright);
+	box-sizing: border-box;
+}
+.product .product__btn button:hover {
+	font-weight: bold;
 }
 
 .cart {
@@ -128,11 +135,13 @@ a {
 	background-size: 100%;
 }
 .cart__drag {
-	display: flex;
+	/* display: flex;
 	align-items: center;
 	justify-content: center;
 	min-height: 15rem;
 	color: var(--lightGray);
 	font-size: 1.5rem;
+	 */
+	padding: 2rem;
 	background-color: var(--deepGray);
 }
