@@ -56,8 +56,12 @@ let cart = [];
 // 장바구니 담기
 function addItem(products, itemIndex) {
 	const newArray = products.find(item => item.id === +itemIndex);
-	cart.push(newArray);
-
+	const cartItem = cart.find(item => item.id === newArray.id);
+	if (cartItem) {
+		cartItem.quantity += 1;
+	} else {
+		cart.push({ ...newArray, quantity: 1 });
+	}
 	console.log(cart);
 	displayCart(cart);
 }
