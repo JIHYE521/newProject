@@ -5,7 +5,7 @@ function loadItem() {
 }
 
 //Item display
-const productsContainer = document.querySelector('.products__container');
+const productsContainer = document.querySelector('.products__container ul');
 function createHTMLString(item) {
 	return `
     <li class="product" data-index=${item.id}>
@@ -24,9 +24,7 @@ function createHTMLString(item) {
 }
 
 function displayItem(products) {
-	const ul = document.createElement('ul');
-	productsContainer.appendChild(ul);
-	ul.innerHTML = products.map(item => createHTMLString(item)).join('');
+	productsContainer.innerHTML = products.map(item => createHTMLString(item)).join('');
 }
 
 //Item Search
@@ -92,18 +90,22 @@ function addItem(products, itemIndex) {
 }
 
 function calculateTotalPrice() {
-	const totalPrice = cart.reduce((a, b) => {
-		return a + b.price * b.quantity;
-		//
-	});
+	const displayPrice = document.querySelector('.cart__total > p > span');
+	const totalPrice = cart.reduce((total, cartItem) => {
+		return total + cartItem.price * cartItem.quantity;
+	}, 0);
 
-	console.log(totalPrice);
+	displayPrice.innerText = totalPrice.toLocaleString();
 }
 
 function setAddCartEventListeners(products) {
 	productsContainer.addEventListener('click', event => {
-		const addCartBtn = event.target.parentNode.parentNode;
+		const target = event.target;
+		const addCartBtn = target.parentNode.parentNode;
 		const targetItemIndex = addCartBtn.dataset.index;
+		if (!target.matches('.btn-add-cart')) {
+			return;
+		}
 		addItem(products, targetItemIndex);
 	});
 }
