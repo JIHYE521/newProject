@@ -42,11 +42,29 @@
 					</div>
 					<div class="cart__total">
 						<p>합계 : <span>0</span>원</p>
-						<button type="button">구매하기</button>
+						<button type="button" class="btn-order">주문하기</button>
 					</div>
 				</section>
 			</section>
-			<script src="src/main.js"></script>
+			<div class="popup-wrap">
+				<div class="popup">
+					<form action="">
+						<div class="popup__input">
+							<label for="name">이름</label>
+							<input type="text" id="name" class="popup__input-name" required />
+						</div>
+						<div class="popup__input">
+							<label for="phone">연락처</label>
+							<input type="text" id="phone" class="popup__input-phone" required />
+						</div>
+						<div class="poup__btns">
+							<button type="submit" class="popup__btn-submit">입력완료</button>
+							<button type="button" class="popup__btn-cancel">취소</button>
+						</div>
+					</form>
+				</div>
+			</div>
 		</div>
+		<script src="src/main.js"></script>
 	</body>
 </html>

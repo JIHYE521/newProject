@@ -44,9 +44,9 @@ function setSearchEventListeners(products) {
 	searchBtn.addEventListener('click', () => {
 		searchItem(products);
 	});
-	searchInput.addEventListener('keydown', event => {
-		if (event.isComposing) return;
-		if (event.key === 'Enter') searchItem(products);
+	searchInput.addEventListener('keydown', e => {
+		if (e.isComposing) return;
+		if (e.key === 'Enter') searchItem(products);
 	});
 }
 
@@ -99,8 +99,8 @@ function calculateTotalPrice() {
 }
 
 function setAddCartEventListeners(products) {
-	productsContainer.addEventListener('click', event => {
-		const target = event.target;
+	productsContainer.addEventListener('click', e => {
+		const target = e.target;
 		const addCartBtn = target.parentNode.parentNode;
 		const targetItemIndex = addCartBtn.dataset.index;
 		if (!target.matches('.btn-add-cart')) {
@@ -109,6 +109,27 @@ function setAddCartEventListeners(products) {
 		addItem(products, targetItemIndex);
 	});
 }
+
+function popupToggle() {
+	popup.parentNode.classList.toggle('show');
+}
+
+const orderBtn = document.querySelector('.btn-order');
+orderBtn.addEventListener('click', popupToggle);
+
+const popup = document.querySelector('.popup');
+const popupForm = document.querySelector('.popup form');
+const popupSubmit = document.querySelector('.popup__btn-submit');
+const popupCancel = document.querySelector('.popup__btn-cancel');
+
+popupForm.addEventListener('submit', e => {
+	const popupInputName = document.querySelector('.popup__input-name');
+	const popupInputPhone = document.querySelector('.popup__input-phone');
+	console.log(popupInputName.value, popupInputPhone.value);
+	popupToggle();
+	e.preventDefault();
+});
+popupCancel.addEventListener('click', () => {});
 
 loadItem()
 	.then(products => {
