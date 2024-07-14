@@ -110,10 +110,10 @@ function setAddCartEventListeners(products) {
 	});
 }
 
+// 주문하기 팝업
 function popupToggle() {
 	popup.parentNode.classList.toggle('show');
 }
-
 const orderBtn = document.querySelector('.btn-order');
 orderBtn.addEventListener('click', popupToggle);
 
