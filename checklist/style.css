@@ -33,6 +33,7 @@ body {
 	margin: 0;
 	padding: 2rem;
 	width: 100%;
+	overflow: auto;
 	box-sizing: border-box;
 }
 .item {
@@ -45,13 +46,23 @@ body {
 	font-size: 1.2rem;
 	box-sizing: border-box;
 }
+.item__text {
+	/* flex: 1; */
+	text-align: left;
+	word-break: break-all;
+}
 .item__checkbox {
+	flex-shrink: 0;
 	display: inline-block;
 	margin-right: 0.5rem;
 	width: 1.2rem;
 	height: 1.2rem;
 }
+.item__checkbox:checked + .item__text {
+	text-decoration: line-through;
+}
 .item__btn-delete {
+	flex-shrink: 0;
 	display: block;
 	margin-left: auto;
 	width: 2rem;
@@ -100,4 +111,10 @@ body {
 	border-bottom-right-radius: 0.5rem;
 	background: var(--black) url(/checklist/images/ico-plus-w.svg) 50% 50% no-repeat;
 	background-size: 70%;
+}
+.test {
+	background-color: red;
+}
+.test2 {
+	background-color: blue;
 }
